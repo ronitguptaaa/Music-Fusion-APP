@@ -1,1 +1,1 @@
-SELECT * FROM AppleMusicDetails
+SELECT * FROM AppleMusicDetails;
