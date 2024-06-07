@@ -3,7 +3,7 @@ from flask_cors import CORS
 import mysql.connector
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 db_config = {
     'user': 'root',
     'password': 'ronitgupta28',
@@ -11,11 +11,10 @@ db_config = {
     'database': 'MusicFusion',
 }
 
-def fetch_data():
+def fetch_all_records():
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
-    
-    cursor.execute("SELECT * FROM MusicFusionDetails ORDER BY artist, title")
+    cursor.execute("SELECT * FROM AppleMusicDetails ORDER BY artist, title")
     results = cursor.fetchall()
     
     cursor.close()
@@ -25,7 +24,7 @@ def fetch_data():
 
 @app.route('/api/music-news', methods=['GET'])
 def get_music_news():
-    data = fetch_data()
+    data = fetch_all_records()
     return jsonify(data)
 
 if __name__ == '__main__':
