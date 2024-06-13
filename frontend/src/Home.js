@@ -27,7 +27,7 @@ function Home() {
                     <div key={index} className="artist-item">
                         <img src={artist.image_url} alt={artist.SpotifyArtist} className="artist-image" />
                         <div className="artist-details">
-                            <span className="artist-name">{artist.name}</span>
+                            <span className="artist-name">{artist.SpotifyArtist}</span>
                             <span className="artist-followers">Followers: {artist.followers.toLocaleString()}</span>
                             <span className="artist-popularity">Popularity: {artist.popularity}</span>
                         </div>
