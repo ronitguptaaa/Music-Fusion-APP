@@ -25,16 +25,16 @@ function Home() {
             <div className="artists-grid">
                 {artists.map((artist, index) => (
                     <div key={index} className="artist-item">
-                        <img src={artist.image_url} alt={artist.name} className="artist-image" />
+                        <img src={artist.image_url} alt={artist.SpotifyArtist} className="artist-image" />
                         <div className="artist-details">
                             <span className="artist-name">{artist.name}</span>
                             <span className="artist-followers">Followers: {artist.followers.toLocaleString()}</span>
                             <span className="artist-popularity">Popularity: {artist.popularity}</span>
                         </div>
                         <div className="artist-links">
-                            <button onClick={() => window.open(`https://open.spotify.com/artist/${artist.id}`, '_blank')}>Spotify</button>
-                            <button onClick={() => window.open(`https://music.apple.com/us/artist/${artist.id}`, '_blank')}>Apple Music</button>
-                            <button onClick={() => window.open(`https://music.youtube.com/channel/${artist.id}`, '_blank')}>YouTube Music</button>
+                            <button onClick={() => window.open(`https://open.spotify.com/artist/${artist.SpotifyArtistID}`, '_blank')}>Spotify</button>
+                            <button onClick={() => window.open(`https://music.apple.com/us/artist/${artist.AppleArtistID}`, '_blank')}>Apple Music</button>
+                            <button onClick={() => window.open(`https://music.youtube.com/channel/${artist.YoutubeArtistID}`, '_blank')}>YouTube Music</button>
                         </div>
                     </div>
                 ))}

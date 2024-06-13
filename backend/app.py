@@ -67,7 +67,7 @@ def search_music():
 def get_artists():
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
-    query = "SELECT * FROM ArtistDetails ORDER BY name"
+    query = "SELECT * FROM ArtistDetailsFinal ORDER BY SpotifyArtist"
     cursor.execute(query)
     results = cursor.fetchall()
     cursor.close()
