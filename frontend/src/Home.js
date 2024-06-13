@@ -32,9 +32,9 @@ function Home() {
                             <span className="artist-popularity">Popularity: {artist.popularity}</span>
                         </div>
                         <div className="artist-links">
-                            <button onClick={() => window.open(`https://open.spotify.com/artist/${artist.spotify_id}`, '_blank')}>Spotify</button>
-                            <button onClick={() => window.open(`https://music.apple.com/us/artist/${artist.apple_music_id}`, '_blank')}>Apple Music</button>
-                            <button onClick={() => window.open(`https://music.youtube.com/channel/${artist.youtube_music_id}`, '_blank')}>YouTube Music</button>
+                            <button onClick={() => window.open(`https://open.spotify.com/artist/${artist.id}`, '_blank')}>Spotify</button>
+                            <button onClick={() => window.open(`https://music.apple.com/us/artist/${artist.id}`, '_blank')}>Apple Music</button>
+                            <button onClick={() => window.open(`https://music.youtube.com/channel/${artist.id}`, '_blank')}>YouTube Music</button>
                         </div>
                     </div>
                 ))}
