@@ -63,5 +63,16 @@ def search_music():
     else:
         return jsonify([])
 
+@app.route('/api/artists', methods=['GET'])
+def get_artists():
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT * FROM ArtistDetails ORDER BY name"
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(results)
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -39,10 +39,10 @@ function MusicNews({ apiUrl }) {
                 <div>
                     {musicNews.map((news, index) => (
                         <div key={index} className="news-item">
-                            <p><strong>Artist:</strong> {news.Artist}</p>
-                            <p><strong>Title:</strong> {news.Title}</p>
-                            <p><strong>Description:</strong> {news.Description}</p>
-                            <button className="read-more-button" onClick={() => window.open(news.URL, '_blank')}>Read more</button>
+                            <p><strong>Artist:</strong> {news.artist}</p>
+                            <p><strong>Title:</strong> {news.title}</p>
+                            <p><strong>Description:</strong> {news.description}</p>
+                            <button className="read-more-button" onClick={() => window.open(news.url, '_blank')}>Read more</button>
                         </div>
                     ))}
                 </div>

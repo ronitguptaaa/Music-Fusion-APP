@@ -23,11 +23,18 @@ function Home() {
         <div className="Home">
             <h2>Featured Artists</h2>
             <div className="artists-grid">
-                {artists.map((Artist, index) => (
+                {artists.map((artist, index) => (
                     <div key={index} className="artist-item">
-                        <img src={Artist.image} alt={Artist.name} className="artist-image" />
+                        <img src={artist.image_url} alt={artist.name} className="artist-image" />
                         <div className="artist-details">
-                            <span className="artist-name">{Artist.name}</span>
+                            <span className="artist-name">{artist.name}</span>
+                            <span className="artist-followers">Followers: {artist.followers.toLocaleString()}</span>
+                            <span className="artist-popularity">Popularity: {artist.popularity}</span>
+                        </div>
+                        <div className="artist-links">
+                            <button onClick={() => window.open(`https://open.spotify.com/artist/${artist.spotify_id}`, '_blank')}>Spotify</button>
+                            <button onClick={() => window.open(`https://music.apple.com/us/artist/${artist.apple_music_id}`, '_blank')}>Apple Music</button>
+                            <button onClick={() => window.open(`https://music.youtube.com/channel/${artist.youtube_music_id}`, '_blank')}>YouTube Music</button>
                         </div>
                     </div>
                 ))}
