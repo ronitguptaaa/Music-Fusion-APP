@@ -74,5 +74,17 @@ def get_artists():
     conn.close()
     return jsonify(results)
 
+@app.route('/api/music-news/general', methods=['GET'])
+def get_general_music_news():
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+    query = "SELECT * FROM GeneralMusicNews LIMIT 3;"
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(results)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

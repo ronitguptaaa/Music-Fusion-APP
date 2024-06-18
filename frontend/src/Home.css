@@ -1,87 +1,30 @@
-/* Home.css */
-
 .Home {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #333;
-}
-
-.artists-grid {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.artist-item {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    padding: 15px;
-    text-align: center;
+    height: 80vh;
 }
 
-.artist-item:hover {
-    transform: translateY(-5px);
-}
-
-.artist-image {
-    width: 200px;
-    height: 200px; 
-    border-radius: 70%;
-    object-fit: cover;
-}
-
-.artist-details {
-    padding: 10px;
-}
-
-.artist-name {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333333;
-    display: block;
-}
-
-.artist-followers,
-.artist-popularity {
-    font-size: 14px;
-    color: #666666;
-    display: block;
-}
-
-.artist-links {
-    margin-top: 10px;
+.block {
+    width: 45%;
+    height: 200px;
     display: flex;
     justify-content: center;
-    gap: 10px;
-}
-
-.artist-links button {
-    background-color: #6200ea;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
 }
 
-.artist-links button:hover {
-    background-color: #3700b3;
+.block:hover {
+    background-color: #e0e0e0;
+}
+
+.block h2 {
+    font-size: 2rem;
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
 }

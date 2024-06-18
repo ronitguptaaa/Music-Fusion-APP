@@ -10,48 +10,10 @@ import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import Home from './Home';
+import Music from './Music';
+import Sports from './Sports';
+import MusicNews from './MusicNews';  // Import the MusicNews component
 import './index.css';
-
-function MusicNews({ apiUrl }) {
-    const [musicNews, setMusicNews] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchMusicNews = async () => {
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error('Network response was not ok');
-                const data = await response.json();
-                setMusicNews(data);
-            } catch (error) {
-                setError(error.message);
-            }
-        };
-
-        fetchMusicNews();
-    }, [apiUrl]);
-
-    return (
-        <div className="MusicNews">
-            <h2>Music News</h2>
-            {error && <p className="error">Error: {error}</p>}
-            {musicNews.length > 0 ? (
-                <div>
-                    {musicNews.map((news, index) => (
-                        <div key={index} className="news-item">
-                            <p><strong>Artist:</strong> {news.Artist}</p>
-                            <p><strong>Title:</strong> {news.Title}</p>
-                            <p><strong>Description:</strong> {news.Description}</p>
-                            <button className="read-more-button" onClick={() => window.open(news.URL, '_blank')}>Read more</button>
-                        </div>
-                    ))}
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
-        </div>
-    );
-}
 
 function App() {
     const [searchOpen, setSearchOpen] = useState(false);
@@ -131,6 +93,8 @@ function App() {
                 </AppBar>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/music" element={<Music />} />
+                    <Route path="/sports" element={<Sports />} />
                     <Route path="/apple" element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/apple" />} />
                     <Route path="/spotify" element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/spotify" />} />
                     <Route path="/MusicFusion" element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/MusicFusion" />} />
