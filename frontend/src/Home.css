@@ -2,29 +2,60 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 80vh;
+    height: 50vh;
 }
 
 .block {
     width: 45%;
-    height: 200px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
 }
 
 .block:hover {
-    background-color: #e0e0e0;
+    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .block h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 0;
+    color: transparent;
+    transition: color 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.block:hover h2 {
+    color: #fff;
+}
+
+.block-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: inherit;
+}
+
+.music-block {
+    background-image: url('https://cdn.pixabay.com/photo/2015/09/09/20/17/microphone-933057_1280.jpg');
+}
+
+.sports-block {
+    background-image: url('https://t4.ftcdn.net/jpg/06/30/33/75/360_F_630337577_WVfnL5SRSma7TByVvahmCM1eE6jbVkpQ.jpg');
 }

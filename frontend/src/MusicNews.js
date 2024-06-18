@@ -24,8 +24,9 @@ function MusicNews({ apiUrl }) {
             {news.length > 0 ? (
                 news.map((item, index) => (
                     <div key={index} className="news-item">
-                        <h3>{item.title}</h3>
-                        <a href={item.url} target="_blank" rel="noopener noreferrer">Read more</a>
+                        <h3>{item.Title}</h3>
+                        <p>{item.Description}</p>
+                        <a href={item.URL} target="_blank" rel="noopener noreferrer">Read more</a>
                     </div>
                 ))
             ) : (

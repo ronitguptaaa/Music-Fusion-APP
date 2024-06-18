@@ -4,6 +4,8 @@ import './Music.css';
 function Music() {
     const [artists, setArtists] = useState([]);
     const [generalMusicNews, setGeneralMusicNews] = useState([]);
+    const [appleMusicNews, setAppleMusicNews] = useState([]);
+    const [spotifyMusicNews, setSpotifyMusicNews] = useState([]);
 
     useEffect(() => {
         const fetchArtists = async () => {
@@ -41,10 +43,39 @@ function Music() {
 
         fetchArtists();
         fetchGeneralMusicNews();
+        fetchAppleMusic();
+        fetchSpotifyMusic();
     }, []);
+
+    const fetchAppleMusic = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/music-news/apple');
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            setAppleMusicNews(data);
+        } catch (error) {
+            console.error('Error fetching Apple Music news:', error);
+        }
+    };
+
+    const fetchSpotifyMusic = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/music-news/spotify');
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            setSpotifyMusicNews(data);
+        } catch (error) {
+            console.error('Error fetching Spotify Music news:', error);
+        }
+    };
 
     return (
         <div className="Music">
+            <div className="button-container">
+                <button onClick={() => window.location.href = '/apple'}>Apple Music</button>
+                <button onClick={() => window.location.href = '/spotify'}>Spotify Music</button>
+            </div>
+
             <h2>Latest Music News</h2>
             <div className="general-news">
                 {generalMusicNews.map((newsItem, index) => (

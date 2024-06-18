@@ -5,13 +5,13 @@ import './Home.css';
 function Home() {
     return (
         <div className="Home">
-            <div className="block" component={Link} to="/music">
-                <Link to="/music">
+            <div className="block music-block">
+                <Link to="/music" className="block-link">
                     <h2>Music</h2>
                 </Link>
             </div>
-            <div className="block" component={Link} to="/sports">
-                <Link to="/sports">
+            <div className="block sports-block">
+                <Link to="/sports" className="block-link">
                     <h2>Sports</h2>
                 </Link>
             </div>

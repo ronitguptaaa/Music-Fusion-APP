@@ -7,18 +7,24 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import Home from './Home';
 import Music from './Music';
 import Sports from './Sports';
-import MusicNews from './MusicNews';  // Import the MusicNews component
-import './index.css';
+import MusicNews from './MusicNews';
+import './App.css';
 
 function App() {
     const [searchOpen, setSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleSearchIconClick = () => {
         setSearchOpen(!searchOpen);
@@ -54,43 +60,67 @@ function App() {
         }
     }, [searchQuery]);
 
+    const toggleDrawer = () => {
+        setDrawerOpen(!drawerOpen);
+    };
+
+    const menuItems = [
+        { text: 'Apple Music', path: '/apple' },
+        { text: 'Spotify', path: '/spotify' },
+        { text: 'MusicFusion', path: '/MusicFusion' },
+        { text: 'Music', path: '/music' },
+        { text: 'Sports', path: '/sports' }
+    ];
+
     return (
         <Router>
             <div className="App">
                 <AppBar position="static" color="default">
                     <Toolbar>
-                        <Typography variant="h6" className="title" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold', fontSize: '24px', textAlign: 'left' }}>
-                            Two Eyez
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" className="title" style={{ flexGrow: 1, textAlign: 'center', fontWeight: 'bold', fontSize: '24px' }}>
+                            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                Two Eyez
+                            </Link>
                         </Typography>
-                        <div className="nav-buttons">
-                            <Button color="inherit" component={Link} to="/apple">Apple Music</Button>
-                            <Button color="inherit" component={Link} to="/spotify">Spotify</Button>
-                            <Button color="inherit" component={Link} to="/MusicFusion">MusicFusion</Button>
-                        </div>
-                        <div className="top-right">
-                            <IconButton color="inherit" onClick={handleSearchIconClick}>
-                                <SearchIcon />
-                            </IconButton>
-                            {searchOpen && (
-                                <Box display="flex" alignItems="center">
-                                    <TextField
-                                        variant="outlined"
-                                        size="small"
-                                        placeholder="Search..."
-                                        className="search-input"
-                                        value={searchQuery}
-                                        onChange={handleSearchInputChange}
-                                        style={{ marginLeft: '10px' }}
-                                    />
-                                    <IconButton color="inherit" onClick={handleClearSearch}>
-                                        <CloseIcon />
-                                    </IconButton>
-                                </Box>
-                            )}
-                            <Button color="inherit">Login</Button>
-                        </div>
+                        {searchOpen && (
+                            <Box display="flex" alignItems="center">
+                                <TextField
+                                    variant="outlined"
+                                    size="small"
+                                    placeholder="Search..."
+                                    className="search-input"
+                                    value={searchQuery}
+                                    onChange={handleSearchInputChange}
+                                    style={{ marginLeft: '10px' }}
+                                />
+                                <IconButton color="inherit" onClick={handleClearSearch}>
+                                    <CloseIcon />
+                                </IconButton>
+                            </Box>
+                        )}
+                        <IconButton color="inherit" onClick={handleSearchIconClick}>
+                            <SearchIcon />
+                        </IconButton>
+                        <Button color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
+                <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
+                    <div className="drawer-header">
+                        <IconButton onClick={toggleDrawer}>
+                            <CloseIcon />
+                        </IconButton>
+                    </div>
+                    <List className="drawer-list">
+                        {menuItems.map((item, index) => (
+                            <ListItem button key={index} component={Link} to={item.path} onClick={toggleDrawer} className="drawer-item">
+                                <ListItemText primary={item.text} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </Drawer>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/music" element={<Music />} />

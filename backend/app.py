@@ -15,7 +15,7 @@ db_config = {
 def fetch_records_from_table(table_name):
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
-    query = f"SELECT * FROM {table_name} ORDER BY artist, title"
+    query = f"SELECT DISTINCT * FROM {table_name} ORDER BY artist"
     cursor.execute(query)
     results = cursor.fetchall()
     cursor.close()
