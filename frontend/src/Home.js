@@ -21,7 +21,7 @@ function Home() {
 
     return (
         <div className="Home">
-            <h2>Featured Artists</h2>
+            <h2>Global Artists</h2>
             <div className="artists-grid">
                 {artists.map((artist, index) => (
                     <div key={index} className="artist-item">

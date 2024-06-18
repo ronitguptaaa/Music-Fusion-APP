@@ -67,7 +67,7 @@ def search_music():
 def get_artists():
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
-    query = "SELECT * FROM ArtistDetailsFinal ORDER BY SpotifyArtist"
+    query = "SELECT * FROM musicfusion.artistdetailsfinal ORDER BY RAND() LIMIT 3"
     cursor.execute(query)
     results = cursor.fetchall()
     cursor.close()
