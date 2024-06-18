@@ -1,0 +1,79 @@
+.MusicNews {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0; 
+}
+
+.news-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.news-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.news-item h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.news-item h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-align: left; /* Ensure title is left-aligned */
+}
+
+.news-item p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    text-align: left; /* Ensure description is left-aligned */
+}
+
+.news-item a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.news-item a:hover {
+    color: #0056b3;
+}

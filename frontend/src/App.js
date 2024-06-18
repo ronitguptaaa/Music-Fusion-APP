@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -25,6 +25,7 @@ function App() {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const [currentHeading, setCurrentHeading] = useState('');
 
     const handleSearchIconClick = () => {
         setSearchOpen(!searchOpen);
@@ -52,14 +53,6 @@ function App() {
         setSearchResults([]);
     };
 
-    useEffect(() => {
-        if (searchQuery.trim() !== '') {
-            handleSearch();
-        } else {
-            setSearchResults([]);
-        }
-    }, [searchQuery]);
-
     const toggleDrawer = () => {
         setDrawerOpen(!drawerOpen);
     };
@@ -71,6 +64,10 @@ function App() {
         { text: 'Music', path: '/music' },
         { text: 'Sports', path: '/sports' }
     ];
+
+    const handleMusicButtonClick = (heading) => {
+        setCurrentHeading(heading);
+    };
 
     return (
         <Router>
@@ -125,9 +122,18 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/music" element={<Music />} />
                     <Route path="/sports" element={<Sports />} />
-                    <Route path="/apple" element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/apple" />} />
-                    <Route path="/spotify" element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/spotify" />} />
-                    <Route path="/MusicFusion" element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/MusicFusion" />} />
+                    <Route
+                        path="/apple"
+                        element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/apple" heading="Apple Music" />}
+                    />
+                    <Route
+                        path="/spotify"
+                        element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/spotify" heading="Spotify Music" />}
+                    />
+                    <Route
+                        path="/MusicFusion"
+                        element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/MusicFusion" heading="Music Fusion News" />}
+                    />
                 </Routes>
                 {searchResults.length > 0 && (
                     <div className="search-results">

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './MusicNews.css'; // Import CSS file
 
-function MusicNews({ apiUrl }) {
+function MusicNews({ apiUrl, heading }) {
     const [news, setNews] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -18,13 +21,21 @@ function MusicNews({ apiUrl }) {
         fetchNews();
     }, [apiUrl]);
 
+    const handleBack = () => {
+        navigate(-1);
+    };
+
     return (
         <div className="MusicNews">
-            <h2>Music News</h2>
+            <div className="header">
+                <h2>{heading}</h2>
+                <button onClick={handleBack} className="back-button">Back</button>
+            </div>
             {news.length > 0 ? (
                 news.map((item, index) => (
                     <div key={index} className="news-item">
-                        <h3>{item.Title}</h3>
+                        <h3>{item.Artist}</h3>
+                        <h4>{item.Title}</h4>
                         <p>{item.Description}</p>
                         <a href={item.URL} target="_blank" rel="noopener noreferrer">Read more</a>
                     </div>

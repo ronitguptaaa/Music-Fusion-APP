@@ -78,7 +78,7 @@ def get_artists():
 def get_general_music_news():
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
-    query = "SELECT * FROM GeneralMusicNews LIMIT 3;"
+    query = "SELECT * FROM GeneralMusicNews ORDER BY RAND() LIMIT 3;"
     cursor.execute(query)
     results = cursor.fetchall()
     cursor.close()
