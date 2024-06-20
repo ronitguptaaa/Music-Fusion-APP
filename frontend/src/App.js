@@ -5,14 +5,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import Home from './Home';
 import Music from './Music';
@@ -21,37 +19,8 @@ import MusicNews from './MusicNews';
 import './App.css';
 
 function App() {
-    const [searchOpen, setSearchOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [currentHeading, setCurrentHeading] = useState('');
-
-    const handleSearchIconClick = () => {
-        setSearchOpen(!searchOpen);
-    };
-
-    const handleSearchInputChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
-
-    const handleSearch = async () => {
-        if (searchQuery.trim() !== '') {
-            try {
-                const response = await fetch(`http://127.0.0.1:5000/api/search?query=${searchQuery}`);
-                if (!response.ok) throw new Error('Network response was not ok');
-                const data = await response.json();
-                setSearchResults(data);
-            } catch (error) {
-                console.error('Error:', error.message);
-            }
-        }
-    };
-
-    const handleClearSearch = () => {
-        setSearchQuery('');
-        setSearchResults([]);
-    };
 
     const toggleDrawer = () => {
         setDrawerOpen(!drawerOpen);
@@ -82,25 +51,6 @@ function App() {
                                 Two Eyez
                             </Link>
                         </Typography>
-                        {searchOpen && (
-                            <Box display="flex" alignItems="center">
-                                <TextField
-                                    variant="outlined"
-                                    size="small"
-                                    placeholder="Search..."
-                                    className="search-input"
-                                    value={searchQuery}
-                                    onChange={handleSearchInputChange}
-                                    style={{ marginLeft: '10px' }}
-                                />
-                                <IconButton color="inherit" onClick={handleClearSearch}>
-                                    <CloseIcon />
-                                </IconButton>
-                            </Box>
-                        )}
-                        <IconButton color="inherit" onClick={handleSearchIconClick}>
-                            <SearchIcon />
-                        </IconButton>
                         <Button color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
@@ -135,19 +85,6 @@ function App() {
                         element={<MusicNews apiUrl="http://127.0.0.1:5000/api/music-news/MusicFusion" heading="Music Fusion News" />}
                     />
                 </Routes>
-                {searchResults.length > 0 && (
-                    <div className="search-results">
-                        <h2>Search Results</h2>
-                        {searchResults.map((result, index) => (
-                            <div key={index} className="result-item">
-                                <p><strong>Artist:</strong> {result.artist}</p>
-                                <p><strong>Title:</strong> {result.title}</p>
-                                <p><strong>Description:</strong> {result.description}</p>
-                                <button className="read-more-button" onClick={() => window.open(result.url, '_blank')}>Read more</button>
-                            </div>
-                        ))}
-                    </div>
-                )}
             </div>
         </Router>
     );

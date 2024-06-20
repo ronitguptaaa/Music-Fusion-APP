@@ -1,8 +1,8 @@
 .Home {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    height: 50vh;
+    flex-direction: column;
 }
 
 .block {
@@ -20,6 +20,7 @@
     position: relative;
     text-align: center;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .block:hover {
@@ -58,4 +59,78 @@
 
 .sports-block {
     background-image: url('https://t4.ftcdn.net/jpg/06/30/33/75/360_F_630337577_WVfnL5SRSma7TByVvahmCM1eE6jbVkpQ.jpg');
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; 
+    overflow-x: hidden; 
+    position: relative; 
+    margin-top: 20px;
+}
+
+.slide {
+    width: 300px; 
+    height: 200px; 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; 
+    transition: transform 1s ease, opacity 0.5s ease; 
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.slide:hover{
+    transform: scale(1.05);
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.slide:hover h2 {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.nav-buttons button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.nav-buttons button:hover {
+    text-decoration: underline;
 }
